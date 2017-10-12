@@ -3,10 +3,30 @@ package labsix;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * This program manipulates DNA string.
+ * The program will display the compliment and different random mutations.
+ *
+ * <p>Bugs: This program has no known bugs
+ *
+ * @author Leah Krainz
+ */
+
 
 public class ManipulateDna {
+
+  /** The main entry point for ManipulateDna.
+   *  The source code inside of this method will be executed when the program
+   *  is run in the command-line. The output of this program will appear in the
+   *  terminal window. The println statements make this program display output.
+   *  The program will display a word find.
+   *  
+   * @param args The command-line arguments
+   **/
+
 
   public static void main(String[] args) {
     // display the name of the programmer and the date
@@ -35,18 +55,38 @@ public class ManipulateDna {
     //comp = comp.toUpperCase();
     System.out.println("The DNA compliment to this strand is " + comp);
 
+    seq1 = seq1.toUpperCase();
     // Step Three: Insert a randomly chosen DNA letter into the DNA String
-    Random mutation = new Random();
-    num1 = insertation.nextInt(4);
-    char insertion = "ATGC".charAt(num1);
+    Random mutation = new Random();//calls random
+    int num1 = mutation.nextInt(4); //Bounds of what can be chosen
+    char insertion = "ATGC".charAt(num1);//calls char at ran num
     String insertMut = insertion + seq1;
-    System.out.println("insertMut");
+    System.out.println("An example of a random insertion is: " + insertMut);
     
         
 
-    // Step Four: Delete a DNA letter from a randomly chosen position in the DNA string
+    // Step Four: Delete a DNA letter from a randomly chosen position in the DNA string. 
 
-    // Step Five: Change a random position in the DNA String to a randomly chosen DNA letter
+    int num2 = mutation.nextInt(4);
+    //calls stringbuilder, allows easy manip
+    StringBuilder delete = new StringBuilder(seq1);
+    delete.deleteCharAt(num2);// deletes at a randomly generated index
+    System.out.println("An example of a random deletion is: " + delete);
+    
+    
+    
+    // Step Five: Change a random position in the DNA String to a randomly chosen DNA letter.
+     
+    int num3 = mutation.nextInt(4);
+    char change = "ATGC".charAt(num3);
+    int num4 = mutation.nextInt(4);
+    StringBuilder swap = new StringBuilder(seq1); //line 71
+    swap.setCharAt(num4, change);//Allows me to say which index (random)
+    // and what character (also random) is subbed in. 
+
+    System.out.println("An example of a random base change is: " + swap);
+    
+    
 
     // Step Six: Display a final thankyou message
     System.out.println("Thank you for using the DNA Manipulation program.");
